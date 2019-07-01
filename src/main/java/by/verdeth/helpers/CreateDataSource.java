@@ -8,19 +8,15 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+//class for create datasource on based properties file
 public class CreateDataSource {
 
     private DriverManagerDataSource driverManagerDataSource;
 
+    //property get
     public DriverManagerDataSource getDriverManagerDataSource() {
         return driverManagerDataSource;
     }
-
-    public void setDriverManagerDataSource(DriverManagerDataSource driverManagerDataSource) {
-        this.driverManagerDataSource = driverManagerDataSource;
-    }
-
-
 
     public CreateDataSource()
     {
@@ -31,12 +27,13 @@ public class CreateDataSource {
            // properties.load(new FileInputStream("/target/Library-0.1/WEB-INF/classes/db.properties"));
             //target/Library-0.1/WEB-INF/classes/db.properties
 
-
+            //get parameters of connection from properties file
             String dbUrl = properties.getProperty("db.url");
             String dbUser = properties.getProperty("db.user");
             String dbPassword = properties.getProperty("db.password");
             String dbDriverClassName = properties.getProperty("db.driverClassName");
 
+            //set fields driverManagerDataSource
             this.driverManagerDataSource.setUrl(dbUrl);
             this.driverManagerDataSource.setUsername(dbUser);
             this.driverManagerDataSource.setPassword(dbPassword);
