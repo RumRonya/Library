@@ -1,0 +1,929 @@
+@import url(https://fonts.googleapis.com/css?family=Didact+Gothic&subset=latin,cyrillic-ext);
+*
+{
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+body
+{
+    min-width: 320px;
+}
+
+/*хэдер*/
+
+img#humb
+{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+img#humb:hover
+{
+    cursor: pointer;
+}
+
+header
+{
+        width: 100%;
+        background-color: #4a2b17;
+}
+
+/*лого*/
+figure#for_logo
+{
+    padding: 10px;
+    background-color: #ffe6b8;
+    border-bottom: solid 1px #4a2b17;
+}
+
+figure#for_logo figcaption
+{
+    margin-left: 70px;
+    color: #4a2b17;
+}
+
+h2#library
+{
+    font-size: 24px;
+}
+
+h1#name_library
+{
+    font-size: 36px;
+}
+
+#logo_img
+{   float: left; 
+   width: 60px;
+}
+/*конец лого*/
+
+/*главное меню*/
+nav#main
+{
+    border-top: solid 1px #4a2b17;
+    //border-bottom: solid 1px #222;   
+}
+
+nav#main ul
+{
+    float: left;
+    width: 60%;
+}
+
+li.main_nav
+{
+    display: inline-block;
+    width: 19%;
+    text-align: center;
+    background-color: #ffe6b8;
+    color: #4a2b17;
+    padding: 10px 0px;
+    font-size: 24px; 
+}
+
+li.main_nav a
+{
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+li.main_nav:hover
+{ 
+    background-color: #ff5349;
+    color: #ffe6b8;
+}
+
+li#here
+{
+   background-color: #4a2b17;
+   color: #ffe6b8;
+}
+/*конец главного меню*/
+
+/*поиск*/
+form#search
+{
+    padding: 8px;    
+    padding-right: 2%;
+    font-size: 20px;
+    text-align: right;
+}
+
+form#search input
+{
+    padding-left: 5px;
+    padding-right: 5px;
+    border: solid 2px #4a2b17;
+}
+
+form#search input:last-of-type
+{
+    cursor: pointer;
+    border: none;
+    background-color: #ffe6b8;
+    color: #4a2b17;
+    padding: 3px 8px;
+}
+
+form#search input:last-of-type:hover
+{
+    color: #ffe6b8;
+    background-color: #ff5349;
+}
+
+form#search input#search_line
+{
+    width: 25%;
+}
+
+form#search input#search_line:focus
+{
+    border: solid 2px #ffe6b8;
+}
+
+
+ p#for_line
+ {
+     clear: both; 
+     float: none;
+ }
+/*конец поиска*/
+/*конец хэдера*/
+
+article#content
+{
+    padding-top: 30px;
+    margin-bottom: 50px;
+    
+}
+
+
+/*меню жанров*/
+nav#nav_genre
+{   
+    float: left;
+    width: 200px;
+    margin-bottom: 90px;
+}
+
+nav#nav_genre ul li
+{
+    padding: 12px;
+    padding-left: 20px;
+    background-color: #ffe6b8;
+    border-top: solid 1px #4a2b17;   
+    border-right: solid 2px #4a2b17;
+    font-size: 18px;
+    color: #4a2b17;
+}
+
+nav#nav_genre ul li.here_genre
+{
+    background-color: #4a2b17;  
+    color: #ffe6b8;  
+}
+
+nav#nav_genre ul li a
+{
+    padding-right: 50%;
+}
+
+nav#nav_genre ul li:hover
+{  
+    background-color: #ff5349;
+    color: #ffe6b8;
+}
+
+nav#nav_genre ul li:last-of-type
+{
+    border-bottom: solid thin #4a2b17;       
+}
+/*конец меню жанров*/
+
+/*блок инфы*/
+
+
+article.books
+{
+        display: flex;
+    flex-wrap: wrap;
+}
+
+article#right_content
+{
+     margin-left: 230px;
+}
+
+/*конец бока инфы*/
+
+/*одна книга*/
+
+
+article.one_book
+{
+    margin-right: 25px;
+    margin-bottom: 10px;
+    width: 29%;
+    float: left;
+}
+
+/*обложка*/
+figure.poster
+{
+    float: left;
+}
+
+figure.poster img
+{   
+    margin-right: 15px;
+    margin-top: 4px;
+    width: 100px;
+    border: solid 1px #4a2b17;
+}
+/*конец обложки*/
+
+/*название книги*/
+h3.name_book_h
+{
+margin-bottom: 5px;    
+}
+
+a.name_book
+{
+    font-size: 22px;
+}
+
+a.name_book:hover
+{
+    color: #f00;
+}
+/*конец названия книги*/
+
+/*инфа о книге*/
+article.info_book
+{
+    padding-bottom: 5px;
+    font-size: 18px;
+}
+
+article.info_book p
+{
+    padding: 2px 0px;    
+}
+
+span.info_of_book
+{
+    color: #999;
+    margin-right: 5px;
+}
+
+a.a_in:hover
+{
+    color: #f00;
+}
+/*конец одной книги*/
+
+section#page
+{
+text-align: center;
+}
+
+p.page 
+{
+    color: #4a2b17;
+    background-color: #ffe6b8;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border: solid 1px #4a2b17;
+    margin: 2px;
+}
+
+p.page:hover
+{
+background-color: #4a2b17;
+    color: #ffe6b8;    
+}
+
+p.text_page
+{
+    margin: 10px;
+}
+
+p.text_page:hover
+{
+    font-weight: bold;
+}
+
+p#here_page
+{
+    background-color: #4a2b17;
+    color: #ffe6b8;
+}
+
+section#page p
+{
+    display: inline-block;
+}
+/*футер*/
+footer
+{
+    border-top: solid 1px #4a2b17;
+    background-color: #ffe6b8;
+    color: #4a2b17;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+section#developer
+{
+    float: left;
+    width: 50%;
+    padding-left: 20px;
+}
+
+form#search_admin input:last-of-type
+{
+    border: solid 1px #4a2b17;
+    background-color: #ffe6b8;
+    color: #4a2b17;
+}
+
+form#search_admin input:last-of-type:hover
+{
+    cursor: pointer;
+    border: solid 1px #4a2b17;
+    background-color: #ff5349;
+    color: #ffe6b8;
+}
+
+section#vlad
+{
+    text-align: right;
+    padding-right: 20px;
+}
+/*конец футера*/
+
+/*авторы и серии*/
+article.one_text
+{
+    float: left;
+}
+
+article.one_text a:hover
+{
+    color: #f00;
+}
+
+article.one_text a
+{
+    font-size: 22px;
+}
+
+
+h4.header_for_page
+{
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+p.not_found
+{
+    font-size: 20px;
+}
+
+
+/*БОЛЬШАЯ книга*/
+article.big_book
+{
+    margin-right: 12%;
+}
+
+article.big_book article.info_book
+{
+    font-size: 22px;
+}
+
+h1.name_book_big
+{
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+img.big_poster
+{
+    width: 400px;
+    margin-bottom: 15px;
+    border: solid 1px #4a2b17;
+}
+
+figure.big_figure
+{
+    float: left;
+    margin-right: 20px;
+}
+
+a.download
+{
+    margin-right: 25px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    display: inline-block;
+    border: solid 1px #4a2b17;
+    color: #4a2b17;
+    background-color: #ffe6b8;
+    padding: 10px;
+}
+
+a.download:hover
+{
+    color: #ffe6b8;
+    background-color: #4a2b17;
+}
+
+p.read:hover
+{
+   color: #ffe6b8;
+    background-color: #4a2b17;
+}
+
+p.read
+{   
+    border: solid 1px #4a2b17;
+    color: #4a2b17;
+    background-color: #ffe6b8;
+    display: inline-block;
+}
+
+p.read a
+{
+padding: 10px;
+display: inline-block;
+}
+article.big_book article.info_book p
+{
+    margin-bottom: 10px;
+}
+/*конец БОЛЬШОЙ книги*/
+
+/*читалка*/
+h2.center_name
+{
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-decoration: underline;
+}
+
+h2.center_name:hover
+{
+    color: red;
+}
+
+p.about
+{
+    font-size: 20px;
+    margin: 0px 50px 10px 5px;
+    text-indent: 30px;
+}
+
+article.one_text
+{
+    font-size: 24px;
+    float: left;
+    width: 400px;
+    padding: 7px 5px;
+}
+
+section.three_book_main
+{
+    clear: both;
+    font-size: 32px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+
+section.text
+{
+    padding: 20px 10px;
+    padding-left: 0px;
+    margin-right: 4%;
+//    background-color: #ffe;
+    
+}
+
+p.paragraph
+{
+    margin-bottom: 10px;
+    text-indent: 20px;
+    font-size: 20px;
+}
+
+
+/*
+Для админа
+*/
+article.for_admin p
+{
+    margin-bottom: 10px;
+    color: red;
+}
+
+article.for_admin form
+{
+    display: flex;
+    flex-direction: column;
+}
+
+article.for_admin form input
+{
+    margin: 10px;
+}
+
+article.for_admin form label
+{
+    margin-left: 10px;
+}
+
+article.for_admin
+{
+    width: 300px;
+    margin: 50px auto;
+}
+
+form.add_book
+{
+    margin-left: 350px;
+    margin-top: 20px;    
+    width: 60%;
+    font-size: 20px;
+}
+
+form.add_book h3
+{
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+form.add_book p.name_field
+{
+    font-size: 18px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+article.admin
+{
+    margin-bottom: 100px;
+}
+
+.ili
+{
+    display: inline-block;
+    margin-left: 15px;
+}
+
+section.check
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+section.download
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+}
+
+p.checkbox
+{
+    margin-top: 2px;
+    margin-bottom: 5px;
+    margin-right: 30px;
+    width: 200px;
+    font-size: 20px;
+}
+
+input.file
+{
+    font-size: 18px;
+    margin-bottom: 7px; 
+    margin-top: 2px;
+    width: 300px;
+}
+
+p.file_field
+{
+    margin-bottom: 2px;
+}
+
+textarea.sum
+{
+    width: 600px;
+    height: 200px;
+}
+
+input.sub
+{
+    display: block;
+    margin-top: 10px;
+    padding: 7px;
+    width: 300px;
+    background-color: #ffe6b8;
+    color: #4a2b17;
+    border: solid 1px #4a2b17;
+}
+
+input.sub:hover
+{
+    background-color: #ff5349;
+    color: #ffe6b8;
+    cursor: pointer;
+}
+
+input.action
+{
+    background-color: #ffe6b8;
+    color: #4a2b17;
+    border: solid 1px #4a2b17;
+}
+
+input.action:hover
+{
+    background-color: #ff5349;
+    color: #ffe6b8;
+    cursor: pointer;
+}
+
+span.red
+{
+    color: red;
+    font-size: 24px;
+}
+
+form#search_admin
+{
+    position: absolute;
+    top:100px;
+    left: 50px;
+}
+
+form#search_admin p
+{
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+form#search_admin input
+{
+    display: block;
+    margin-bottom: 5px;
+     font-size: 20px;   
+}
+
+form#search_admin input:last-of-type
+{
+     padding: 2px 10px;
+
+}
+
+article#books_search
+{
+    margin-left: 400px;
+    margin-top: 20px;
+}
+
+p.back
+{
+    width: 300px;
+    position: absolute;
+    top:220px;
+    left: 50px;
+    font-size: 20px;
+}
+
+input.action
+{
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    margin-right: 20px;
+}
+
+img.update
+{
+    width: 30px;
+    display: inline-block;
+}
+
+.up
+{
+    display: none;
+}
+
+.upg
+{  display: none;  
+   flex-direction: row;
+    flex-wrap: wrap;   
+}
+
+.upf
+{  display: none;  
+   flex-direction: column;  
+}
+
+article.admin_book
+{
+    margin-left: 420px;
+}
+
+article.one_quest
+{
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom: solid 1px #000;
+    margin-right: 5%;
+}
+
+article.one_quest h4
+{
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+article.one_quest h4.quest
+{
+    font-size: 24px;
+}
+
+form.quest
+{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-top: 20px;
+    margin-left: 10px;
+    background-color: #ffe6b8;
+    color: #4a2b17;
+    border: solid 1px #4a2b17; 
+    padding: 15px 10px; 
+    font-size: 24px;
+}
+
+form.quest input
+{
+    margin: 5px 15px;
+}
+
+form.quest input:last-of-type
+{
+    background-color: #4a2b17;
+    color: #ffe6b8;
+    border: none;
+    padding: 5px 0px;
+}
+
+form.quest input:last-of-type:hover
+{
+    cursor: pointer;
+}
+
+form.quest label
+{
+    margin: 5px 15px;
+}
+
+form.quest textarea
+{
+    margin: 5px 15px;
+    height: 200px;
+}
+
+h3.three_book_main
+{
+    font-size: 28px;
+    padding-bottom: 5px;
+    border-bottom: solid 1px #000;
+    margin-bottom: 5px;
+    margin-right: 5%;
+}
+
+/*для невидимости на больших экранах*/
+@media only screen and (min-width:768px) {
+ li#for_humb
+ {
+     display: none;
+ }
+ 
+ li.for_humb
+ {
+     display: none;
+ }
+img#humb
+{
+    display: none;
+}
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px) {
+article.one_book
+{
+    margin-right: 25px;
+    margin-bottom: 10px;
+    width: 45%;
+    float: left;
+}
+}
+
+@media only screen and (max-width:768px){
+nav#nav_genre
+{
+    display: none;
+}
+nav#main
+{
+    display: block;
+}
+}
+
+@media only screen and (max-width:768px) and (min-width:320px) {
+article.one_book
+{
+    margin-right: 25px;
+    margin-bottom: 10px;
+    width: 95%;
+    float: none;
+    border-bottom: solid 1px #000;
+}
+
+nav#main ul
+{
+    position: fixed;
+    top: 10px;
+    right: 70px;
+    width: 200px;
+    display: none;
+}
+
+li.main_nav
+{
+    display: block;    
+    width: 100%;
+    border: solid 1px #4a2b17;
+}
+
+
+/*поиск*/
+form#search
+{
+    text-align: left;
+}
+
+form#search input
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+form#search input#search_line
+{
+    width: 65%;
+}
+
+article#right_content
+{
+     margin-left: 20px;
+}
+
+section.text
+{
+    margin-right: 20px;
+}
+
+p.paragraph
+{
+    font-size: 18px;
+}
+
+img.big_poster
+{
+    width: 95%;
+}
+}
