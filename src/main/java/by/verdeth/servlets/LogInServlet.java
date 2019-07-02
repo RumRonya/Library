@@ -1,6 +1,7 @@
 package by.verdeth.servlets;
 
 import by.verdeth.dao.userDao.UserDao;
+import by.verdeth.dao.userDao.UserDaoImplSingleton;
 import by.verdeth.dao.userDao.UserDaoJdbcImpl;
 import by.verdeth.helpers.CreateDataSource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -17,17 +18,17 @@ import java.io.IOException;
 @WebServlet ("/login")
 public class LogInServlet extends HttpServlet {
 
-    private UserDao userDao;
+//    private UserDao userDao;
 
 
     @Override
     public void init() throws ServletException {
 
-        DriverManagerDataSource dataSource;
-        //CreateDataSource createDataSource = new CreateDataSource();
-        dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
-
-        this.userDao = new UserDaoJdbcImpl(dataSource);
+//        DriverManagerDataSource dataSource;
+//        //CreateDataSource createDataSource = new CreateDataSource();
+//        dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
+//
+//        this.userDao = new UserDaoJdbcImpl(dataSource);
 
     }
 
@@ -35,8 +36,9 @@ public class LogInServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String nameUser = req.getParameter("user-name");
         String password = req.getParameter("password");
-        int i = 0;
-        if (userDao.isHasUser(nameUser, password))
+        //int i = 0;
+
+        if (UserDaoImplSingleton.getInstance().getUserDao().isHasUser(nameUser, password))
         {
             resp.sendRedirect("/index");
             //add session

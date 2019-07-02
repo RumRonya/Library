@@ -1,8 +1,10 @@
 package by.verdeth.servlets;
 
 import by.verdeth.dao.bookDao.BookDao;
+import by.verdeth.dao.bookDao.BookDaoImplSingleton;
 import by.verdeth.dao.bookDao.BookDaoJdbcImpl;
 import by.verdeth.dao.genreDao.GenreDao;
+import by.verdeth.dao.genreDao.GenreDaoImplSingleton;
 import by.verdeth.dao.genreDao.GenreDaoJdbcImpl;
 import by.verdeth.helpers.CreateDataSource;
 import by.verdeth.models.Book;
@@ -24,26 +26,26 @@ import java.util.List;
 public class GenreServlet extends HttpServlet {
 
 
-    private BookDao bookDao;
-    private GenreDao genreDao;
+//    private BookDao bookDao;
+//    private GenreDao genreDao;
 
     @Override
     public void init() throws ServletException {
 
         //connect database
-        DriverManagerDataSource dataSource;
-
-        try {
-            //CreateDataSource createDataSource = new CreateDataSource();
-            dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
-
-            genreDao = new GenreDaoJdbcImpl(dataSource);
-            bookDao = new BookDaoJdbcImpl(dataSource);
-        }
-        catch (Exception ex)
-        {
-            throw new IllegalStateException(ex);
-        }
+//        DriverManagerDataSource dataSource;
+//
+//        try {
+//            //CreateDataSource createDataSource = new CreateDataSource();
+//            dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
+//
+//            genreDao = new GenreDaoJdbcImpl(dataSource);
+//            bookDao = new BookDaoJdbcImpl(dataSource);
+//        }
+//        catch (Exception ex)
+//        {
+//            throw new IllegalStateException(ex);
+//        }
     }
 
     @Override
@@ -56,10 +58,12 @@ public class GenreServlet extends HttpServlet {
         {
             Integer idGenre = Integer.valueOf(req.getParameter("id"));
 
-            List<Genre> genres = genreDao.findAll();
+            List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
+            //        genreDao.findAll();
             req.setAttribute("genresFromServer", genres);
 
-            List<Book> books = bookDao.findAllByIdGenre(idGenre);
+            List<Book> books = BookDaoImplSingleton.getInstance().getBookDao().findAllByIdGenre(idGenre);
+                    //bookDao.findAllByIdGenre(idGenre);
             req.setAttribute("booksGenreFromServer", books);
 
             req.getServletContext().getRequestDispatcher("/jsp/genre.jsp").forward(req,resp);

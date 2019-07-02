@@ -3,8 +3,10 @@ package by.verdeth.servlets;
 import by.verdeth.dao.authorDao.AuthorDao;
 import by.verdeth.dao.authorDao.AuthorDaoJdbcImpl;
 import by.verdeth.dao.bookDao.BookDao;
+import by.verdeth.dao.bookDao.BookDaoImplSingleton;
 import by.verdeth.dao.bookDao.BookDaoJdbcImpl;
 import by.verdeth.dao.genreDao.GenreDao;
+import by.verdeth.dao.genreDao.GenreDaoImplSingleton;
 import by.verdeth.dao.genreDao.GenreDaoJdbcImpl;
 import by.verdeth.helpers.CreateDataSource;
 import by.verdeth.models.Book;
@@ -23,9 +25,9 @@ import java.util.List;
 @WebServlet ("/author")
 public class AuthorServlet extends HttpServlet {
 
-    private GenreDao genreDao;
-    private AuthorDao authorDao;
-    private BookDao bookDao;
+    //private GenreDao genreDao;
+    //private AuthorDao authorDao;
+    //private BookDao bookDao;
 
 
     @Override
@@ -33,14 +35,14 @@ public class AuthorServlet extends HttpServlet {
 
      try
      {
-        DriverManagerDataSource dataSource;
+        //DriverManagerDataSource dataSource;
 
          //CreateDataSource createDataSource = new CreateDataSource();
-         dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
+        // dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
 
-        authorDao = new AuthorDaoJdbcImpl(dataSource);
-        genreDao = new GenreDaoJdbcImpl(dataSource);
-        bookDao = new BookDaoJdbcImpl(dataSource);
+        //authorDao = new AuthorDaoJdbcImpl(dataSource);
+       // genreDao = new GenreDaoJdbcImpl(dataSource);
+       // bookDao = new BookDaoJdbcImpl(dataSource);
     }
     catch (Exception ex)
     {
@@ -58,10 +60,12 @@ public class AuthorServlet extends HttpServlet {
         {
             Integer idAuthor = Integer.valueOf(req.getParameter("id"));
 
-            List<Genre> genres = genreDao.findAll();
+            List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
+//                    genreDao.findAll();
             req.setAttribute("genresFromServer", genres);
 
-            List<Book> books = bookDao.findAllByIdAuthor(idAuthor);
+            List<Book> books = BookDaoImplSingleton.getInstance().getBookDao().findAllByIdAuthor(idAuthor);
+               //     bookDao.findAllByIdAuthor(idAuthor);
 
             req.setAttribute("booksAuthorFromServer", books);
 

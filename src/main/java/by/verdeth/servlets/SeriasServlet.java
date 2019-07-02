@@ -1,8 +1,10 @@
 package by.verdeth.servlets;
 
 import by.verdeth.dao.genreDao.GenreDao;
+import by.verdeth.dao.genreDao.GenreDaoImplSingleton;
 import by.verdeth.dao.genreDao.GenreDaoJdbcImpl;
 import by.verdeth.dao.seriaDao.SeriaDao;
+import by.verdeth.dao.seriaDao.SeriaDaoImplSingleton;
 import by.verdeth.dao.seriaDao.SeriaDaoJdbcImpl;
 import by.verdeth.helpers.CreateDataSource;
 import by.verdeth.models.Genre;
@@ -20,37 +22,39 @@ import java.util.List;
 @WebServlet("/serias")
 public class SeriasServlet extends HttpServlet {
 
-    private GenreDao genreDao;
-    private SeriaDao seriaDao;
+//    private GenreDao genreDao;
+//    private SeriaDao seriaDao;
 
     @Override
     public void init() throws ServletException {
-        //connect database
-
-        DriverManagerDataSource dataSource;
-
-        try {
-            //CreateDataSource createDataSource = new CreateDataSource();
-            dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
-
-            genreDao = new GenreDaoJdbcImpl(dataSource);
-            seriaDao = new SeriaDaoJdbcImpl(dataSource);
-        }
-        catch (Exception ex)
-        {
-            throw new IllegalStateException(ex);
-        }
+//        //connect database
+//
+//        DriverManagerDataSource dataSource;
+//
+//        try {
+//            //CreateDataSource createDataSource = new CreateDataSource();
+//            dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
+//
+//            genreDao = new GenreDaoJdbcImpl(dataSource);
+//            seriaDao = new SeriaDaoJdbcImpl(dataSource);
+//        }
+//        catch (Exception ex)
+//        {
+//            throw new IllegalStateException(ex);
+//        }
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //give list of genres from database
-        List<Genre> genres = genreDao.findAll();
+        List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
+//                genreDao.findAll();
 
         //set attribute for jsp
         req.setAttribute("genresFromServer", genres);
 
-        HashMap<String, Integer> seriasAndBooks = seriaDao.findAllSeriasAndCountBooks();
+        HashMap<String, Integer> seriasAndBooks = SeriaDaoImplSingleton.getInstance().getSeriaDao().findAllSeriasAndCountBooks();
+        //        seriaDao.findAllSeriasAndCountBooks();
 
         req.setAttribute("seriasAndBooksFromServer", seriasAndBooks);
 

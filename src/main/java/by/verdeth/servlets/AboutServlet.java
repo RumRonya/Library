@@ -1,6 +1,7 @@
 package by.verdeth.servlets;
 
 import by.verdeth.dao.genreDao.GenreDao;
+import by.verdeth.dao.genreDao.GenreDaoImplSingleton;
 import by.verdeth.dao.genreDao.GenreDaoJdbcImpl;
 import by.verdeth.helpers.CreateDataSource;
 import by.verdeth.models.Genre;
@@ -19,26 +20,26 @@ import java.util.List;
 public class AboutServlet extends HttpServlet {
 
     //dao of genre
-    private GenreDao genreDao;
+    //private GenreDao genreDao;
 
     @Override
     public void init() throws ServletException {
 
         //connect database
-        DriverManagerDataSource dataSource;
+        //DriverManagerDataSource dataSource;
 
-        try {
+       // try {
             //get datasource //MAKE THIS SINGLETON!
             //CreateDataSource createDataSource = new CreateDataSource();
-            dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
+            //dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
 
             //creaate impl of genredao
-            genreDao = new GenreDaoJdbcImpl(dataSource);
-        }
-        catch (Exception ex)
-        {
-            throw new IllegalStateException(ex);
-        }
+            //genreDao = new GenreDaoJdbcImpl(dataSource);
+        //}
+       // catch (Exception ex)
+       // {
+       //     throw new IllegalStateException(ex);
+       // }
 
         //it's old unit, part of this is class CreateDataSource
 
@@ -70,7 +71,8 @@ public class AboutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //get list of genres from database
-        List<Genre> genres = genreDao.findAll();
+        List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
+        //genreDao.findAll();
 
         //set attribute for jsp
         req.setAttribute("genresFromServer", genres);

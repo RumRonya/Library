@@ -1,6 +1,7 @@
 package by.verdeth.servlets;
 
 import by.verdeth.dao.userDao.UserDao;
+import by.verdeth.dao.userDao.UserDaoImplSingleton;
 import by.verdeth.dao.userDao.UserDaoJdbcImpl;
 import by.verdeth.helpers.CreateDataSource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -15,14 +16,14 @@ import java.io.IOException;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
-    private UserDao userDao;
+    //private UserDao userDao;
 
     @Override
     public void init() throws ServletException {
-        //CreateDataSource createDataSource = new CreateDataSource();
-        DriverManagerDataSource dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
-
-        userDao = new UserDaoJdbcImpl(dataSource);
+//        //CreateDataSource createDataSource = new CreateDataSource();
+//        DriverManagerDataSource dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
+//
+//        userDao = new UserDaoJdbcImpl(dataSource);
     }
 
     @Override
@@ -44,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
         else
         {
             int k = 0;
-            if (userDao.addUser(nameUser, password)) {
+            if (UserDaoImplSingleton.getInstance().getUserDao().addUser(nameUser, password)) {
                 req.getServletContext().getRequestDispatcher("/login").forward(req, resp);
             }
             else

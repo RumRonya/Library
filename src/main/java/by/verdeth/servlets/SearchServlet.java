@@ -1,8 +1,10 @@
 package by.verdeth.servlets;
 
 import by.verdeth.dao.bookDao.BookDao;
+import by.verdeth.dao.bookDao.BookDaoImplSingleton;
 import by.verdeth.dao.bookDao.BookDaoJdbcImpl;
 import by.verdeth.dao.genreDao.GenreDao;
+import by.verdeth.dao.genreDao.GenreDaoImplSingleton;
 import by.verdeth.dao.genreDao.GenreDaoJdbcImpl;
 import by.verdeth.helpers.CreateDataSource;
 import by.verdeth.models.Book;
@@ -21,38 +23,43 @@ import java.util.List;
 @WebServlet ("/search")
 public class SearchServlet extends HttpServlet {
 
-    private GenreDao genreDao;
-    private BookDao bookDao;
+//    private GenreDao genreDao;
+//    private BookDao bookDao;
 
     @Override
     public void init() throws ServletException {
-
-        //connect database
-
-        DriverManagerDataSource dataSource;
-
-        try {
-            //CreateDataSource createDataSource = new CreateDataSource();
-            dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
-
-            genreDao = new GenreDaoJdbcImpl(dataSource);
-            bookDao = new BookDaoJdbcImpl(dataSource);
-        }
-        catch (Exception ex)
-        {
-            throw new IllegalStateException(ex);
-        }
+//
+//        //connect database
+//
+//        DriverManagerDataSource dataSource;
+//
+//        try {
+//            //CreateDataSource createDataSource = new CreateDataSource();
+//            dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
+//
+//            genreDao = new GenreDaoJdbcImpl(dataSource);
+//            bookDao = new BookDaoJdbcImpl(dataSource);
+//        }
+//        catch (Exception ex)
+//        {
+//            throw new IllegalStateException(ex);
+//        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //give list of genres from database
-        List<Genre> genres = genreDao.findAll();//set attribute for jsp
+        List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
+                //genreDao.findAll();
+
+        // set attribute for jsp
         req.setAttribute("genresFromServer", genres);
 
         String stSearch = req.getParameter("search");
-        int i = 0;
-        List<Book> books = bookDao.findSubstring(stSearch);
+
+        List<Book> books = BookDaoImplSingleton.getInstance().getBookDao().findSubstring(stSearch);
+
+                //bookDao.findSubstring(stSearch);
         req.setAttribute("booksFromServer", books);
 
         req.getServletContext().getRequestDispatcher("/jsp/search.jsp").forward(req,resp);
@@ -62,7 +69,8 @@ public class SearchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //give list of genres from database
-        List<Genre> genres = genreDao.findAll();
+        List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
+//                genreDao.findAll();
 
         //set attribute for jsp
         req.setAttribute("genresFromServer", genres);
