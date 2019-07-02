@@ -15,34 +15,41 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+
+//implements AuthorDAO and uses JDBC to connect to a database
 public class AuthorDaoJdbcImpl implements AuthorDao {
 
     private Connection connection;
     private DataSource dataSource;
 
+
+    //final Strings SQL queries
+    //query for select all authors with count of books
     //language=SQL
-    private String SQL_SELECT_ALL_WITH_COUNT_BOOKS = "SELECT name_author, COUNT(id_book) as count_book " +
+    final private String SQL_SELECT_ALL_WITH_COUNT_BOOKS = "SELECT name_author, COUNT(id_book) as count_book " +
                                                     "FROM Author LEFT JOIN Book\n" +
                                                     "ON Author.id_author = Book.id_author\n" +
                                                     "GROUP BY name_author";
 
+    //query for select all books by id author
     //language=SQL
     final private String SQL_SELECT_ALL_BOOKS_BY_ID_AUTHOR = "SELECT author.name_author, book.* " +
                                                             "FROM author JOIN book " +
                                                             "ON author.id_author = book.id_author " +
                                                             "WHERE author.id_author = ?";
 
+    //query for select author by id author
+    //language=SQL
+    final private String SQL_SELECT_BY_ID = "SELECT * FROM author " +
+                                            "WHERE id_author = ?";
+
+    //query for select all authors
+    //language=SQL
+    final private String SQL_SELECT_ALL = "SELECT * FROM author";
 
 
-
-//    SELECT author.*, COUNT(id_book) FROM author LEFT JOIN book
-//    ON author.id_author = book.id_author
-//    GROUP BY author.id_author, author.name_author
-
-
-    final private String SQL = "";
-
-
+    //constructor
+    //initializes private variables
     public AuthorDaoJdbcImpl (DataSource dataSource)
     {
         try {
@@ -54,6 +61,8 @@ public class AuthorDaoJdbcImpl implements AuthorDao {
         }
     }
 
+
+    //override methods
 
     @Override
     public HashMap<String, Integer> findAllAuthorsAndCountBooks() {
@@ -137,10 +146,6 @@ public class AuthorDaoJdbcImpl implements AuthorDao {
         }
     }
 
-    //language=SQL
-    final private String SQL_SELECT_BY_ID = "SELECT * FROM author " +
-                                            "WHERE id_author = ?";
-
     @Override
     public Optional<Author> find(Integer id) {
         try {
@@ -161,23 +166,6 @@ public class AuthorDaoJdbcImpl implements AuthorDao {
             throw  new IllegalArgumentException(ex);
         }
     }
-
-    @Override
-    public void save(Author model) {
-
-    }
-
-    @Override
-    public void update(Author model) {
-
-    }
-
-    @Override
-    public void delete(Integer id) {
-
-    }
-
-    final private String SQL_SELECT_ALL = "SELECT * FROM author";
 
     @Override
     public List<Author> findAll()
@@ -205,5 +193,17 @@ public class AuthorDaoJdbcImpl implements AuthorDao {
             throw new IllegalArgumentException(ex);
         }
 
+    }
+
+    @Override
+    public void save(Author model) {
+    }
+
+    @Override
+    public void update(Author model) {
+    }
+
+    @Override
+    public void delete(Integer id) {
     }
 }
