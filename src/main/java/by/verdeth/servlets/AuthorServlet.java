@@ -35,7 +35,8 @@ public class AuthorServlet extends HttpServlet {
      {
         DriverManagerDataSource dataSource;
 
-        dataSource = new CreateDataSource().getDriverManagerDataSource();
+         //CreateDataSource createDataSource = new CreateDataSource();
+         dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
 
         authorDao = new AuthorDaoJdbcImpl(dataSource);
         genreDao = new GenreDaoJdbcImpl(dataSource);

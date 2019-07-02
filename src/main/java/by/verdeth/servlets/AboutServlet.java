@@ -29,8 +29,8 @@ public class AboutServlet extends HttpServlet {
 
         try {
             //get datasource //MAKE THIS SINGLETON!
-            CreateDataSource createDataSource = new CreateDataSource();
-            dataSource =  createDataSource.getDriverManagerDataSource();
+            //CreateDataSource createDataSource = new CreateDataSource();
+            dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
 
             //creaate impl of genredao
             genreDao = new GenreDaoJdbcImpl(dataSource);

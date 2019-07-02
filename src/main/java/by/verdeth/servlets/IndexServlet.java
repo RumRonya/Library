@@ -33,8 +33,8 @@ public class IndexServlet extends HttpServlet {
         DriverManagerDataSource dataSource;
 
         try {
-            CreateDataSource createDataSource = new CreateDataSource();
-            dataSource =  createDataSource.getDriverManagerDataSource();
+            //CreateDataSource createDataSource = new CreateDataSource();
+            dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
 
             genreDao = new GenreDaoJdbcImpl(dataSource);
             bookDao = new BookDaoJdbcImpl(dataSource);

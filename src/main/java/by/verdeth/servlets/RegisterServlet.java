@@ -19,8 +19,8 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        CreateDataSource createDataSource = new CreateDataSource();
-        DriverManagerDataSource dataSource = createDataSource.getDriverManagerDataSource();
+        //CreateDataSource createDataSource = new CreateDataSource();
+        DriverManagerDataSource dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
 
         userDao = new UserDaoJdbcImpl(dataSource);
     }

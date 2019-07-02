@@ -24,9 +24,9 @@ public class LogInServlet extends HttpServlet {
     public void init() throws ServletException {
 
         DriverManagerDataSource dataSource;
-        CreateDataSource createDataSource = new CreateDataSource();
+        //CreateDataSource createDataSource = new CreateDataSource();
+        dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
 
-        dataSource = createDataSource.getDriverManagerDataSource();
         this.userDao = new UserDaoJdbcImpl(dataSource);
 
     }

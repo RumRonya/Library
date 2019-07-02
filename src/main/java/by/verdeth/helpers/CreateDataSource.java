@@ -11,6 +11,7 @@ import java.util.Properties;
 //class for create datasource on based properties file
 public class CreateDataSource {
 
+    private static CreateDataSource instance;
     private DriverManagerDataSource driverManagerDataSource;
 
     //property get
@@ -18,8 +19,16 @@ public class CreateDataSource {
         return driverManagerDataSource;
     }
 
-    public CreateDataSource()
+    public static CreateDataSource getInstance()
     {
+        if (instance==null)
+        {instance = new CreateDataSource();}
+        return instance;
+    }
+
+    private CreateDataSource()
+    {
+
         this.driverManagerDataSource = new DriverManagerDataSource();
         Properties properties = new Properties();
         try {
