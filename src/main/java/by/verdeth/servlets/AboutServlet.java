@@ -1,11 +1,7 @@
 package by.verdeth.servlets;
 
-import by.verdeth.dao.genreDao.GenreDao;
 import by.verdeth.dao.genreDao.GenreDaoImplSingleton;
-import by.verdeth.dao.genreDao.GenreDaoJdbcImpl;
-import by.verdeth.helpers.CreateDataSource;
 import by.verdeth.models.Genre;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,11 +15,8 @@ import java.util.List;
 @WebServlet ("/about")
 public class AboutServlet extends HttpServlet {
 
-    //dao of genre
-    //private GenreDao genreDao;
-
     @Override
-    public void init() throws ServletException {
+    public void init(){
 
         //connect database
         //DriverManagerDataSource dataSource;
@@ -72,7 +65,6 @@ public class AboutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //get list of genres from database
         List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
-        //genreDao.findAll();
 
         //set attribute for jsp
         req.setAttribute("genresFromServer", genres);

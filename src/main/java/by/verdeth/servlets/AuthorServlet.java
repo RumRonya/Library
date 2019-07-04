@@ -1,17 +1,9 @@
 package by.verdeth.servlets;
 
-import by.verdeth.dao.authorDao.AuthorDao;
-import by.verdeth.dao.authorDao.AuthorDaoJdbcImpl;
-import by.verdeth.dao.bookDao.BookDao;
 import by.verdeth.dao.bookDao.BookDaoImplSingleton;
-import by.verdeth.dao.bookDao.BookDaoJdbcImpl;
-import by.verdeth.dao.genreDao.GenreDao;
 import by.verdeth.dao.genreDao.GenreDaoImplSingleton;
-import by.verdeth.dao.genreDao.GenreDaoJdbcImpl;
-import by.verdeth.helpers.CreateDataSource;
 import by.verdeth.models.Book;
 import by.verdeth.models.Genre;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,13 +17,8 @@ import java.util.List;
 @WebServlet ("/author")
 public class AuthorServlet extends HttpServlet {
 
-    //private GenreDao genreDao;
-    //private AuthorDao authorDao;
-    //private BookDao bookDao;
-
-
     @Override
-    public void init() throws ServletException {
+    public void init(){
 
      try
      {
@@ -56,22 +43,17 @@ public class AuthorServlet extends HttpServlet {
         {
             req.getServletContext().getRequestDispatcher("/about").forward(req,resp);
         }
-        else
-        {
-            Integer idAuthor = Integer.valueOf(req.getParameter("id"));
 
-            List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
-//                    genreDao.findAll();
-            req.setAttribute("genresFromServer", genres);
+        Integer idAuthor = Integer.valueOf(req.getParameter("id"));
 
-            List<Book> books = BookDaoImplSingleton.getInstance().getBookDao().findAllByIdAuthor(idAuthor);
-               //     bookDao.findAllByIdAuthor(idAuthor);
+        List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
+        req.setAttribute("genresFromServer", genres);
 
-            req.setAttribute("booksAuthorFromServer", books);
+        List<Book> books = BookDaoImplSingleton.getInstance().getBookDao().findAllByIdAuthor(idAuthor);
+        req.setAttribute("booksAuthorFromServer", books);
 
-            req.getServletContext().getRequestDispatcher("/jsp/author.jsp").forward(req,resp);
+        req.getServletContext().getRequestDispatcher("/jsp/author.jsp").forward(req,resp);
 
-        }
     }
 
 }

@@ -1,15 +1,9 @@
 package by.verdeth.servlets;
 
-import by.verdeth.dao.bookDao.BookDao;
 import by.verdeth.dao.bookDao.BookDaoImplSingleton;
-import by.verdeth.dao.bookDao.BookDaoJdbcImpl;
-import by.verdeth.dao.genreDao.GenreDao;
 import by.verdeth.dao.genreDao.GenreDaoImplSingleton;
-import by.verdeth.dao.genreDao.GenreDaoJdbcImpl;
-import by.verdeth.helpers.CreateDataSource;
 import by.verdeth.models.Book;
 import by.verdeth.models.Genre;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,20 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
-import java.util.Properties;
 
 @WebServlet ("/books")
 public class BooksServlet extends HttpServlet {
 
-    //private GenreDao genreDao;
-    //private BookDao bookDao;
-
     @Override
-    public void init() throws ServletException {
-
+    public void init(){
         //connect database
 
 //        DriverManagerDataSource dataSource;
