@@ -1,10 +1,6 @@
 package by.verdeth.servlets;
 
-import by.verdeth.dao.userDao.UserDao;
 import by.verdeth.dao.userDao.UserDaoImplSingleton;
-import by.verdeth.dao.userDao.UserDaoJdbcImpl;
-import by.verdeth.helpers.CreateDataSource;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,18 +14,15 @@ import java.io.IOException;
 @WebServlet ("/login")
 public class LogInServlet extends HttpServlet {
 
-//    private UserDao userDao;
 
 
     @Override
-    public void init() throws ServletException {
-
+    public void init(){
 //        DriverManagerDataSource dataSource;
 //        //CreateDataSource createDataSource = new CreateDataSource();
 //        dataSource =  CreateDataSource.getInstance().getDriverManagerDataSource();
 //
 //        this.userDao = new UserDaoJdbcImpl(dataSource);
-
     }
 
     @Override

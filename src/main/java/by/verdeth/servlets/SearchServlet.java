@@ -1,15 +1,9 @@
 package by.verdeth.servlets;
 
-import by.verdeth.dao.bookDao.BookDao;
 import by.verdeth.dao.bookDao.BookDaoImplSingleton;
-import by.verdeth.dao.bookDao.BookDaoJdbcImpl;
-import by.verdeth.dao.genreDao.GenreDao;
 import by.verdeth.dao.genreDao.GenreDaoImplSingleton;
-import by.verdeth.dao.genreDao.GenreDaoJdbcImpl;
-import by.verdeth.helpers.CreateDataSource;
 import by.verdeth.models.Book;
 import by.verdeth.models.Genre;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,11 +17,9 @@ import java.util.List;
 @WebServlet ("/search")
 public class SearchServlet extends HttpServlet {
 
-//    private GenreDao genreDao;
-//    private BookDao bookDao;
 
     @Override
-    public void init() throws ServletException {
+    public void init(){
 //
 //        //connect database
 //
@@ -46,31 +38,35 @@ public class SearchServlet extends HttpServlet {
 //        }
     }
 
+    //post-method url 'search'
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //give list of genres from database
         List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
-                //genreDao.findAll();
 
         // set attribute for jsp
         req.setAttribute("genresFromServer", genres);
 
-        String stSearch = req.getParameter("search");
+        List<Book> books = null;
+        //checking parameter ''search'
+        if (req.getParameter("search")!=null)
+        {
+            String stSearch = req.getParameter("search");
 
-        List<Book> books = BookDaoImplSingleton.getInstance().getBookDao().findSubstring(stSearch);
-
-                //bookDao.findSubstring(stSearch);
+            books = BookDaoImplSingleton.getInstance().getBookDao().findSubstring(stSearch);
+        }
         req.setAttribute("booksFromServer", books);
 
         req.getServletContext().getRequestDispatcher("/jsp/search.jsp").forward(req,resp);
 
     }
 
+
+    //get-method url 'search'
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //give list of genres from database
         List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
-//                genreDao.findAll();
 
         //set attribute for jsp
         req.setAttribute("genresFromServer", genres);

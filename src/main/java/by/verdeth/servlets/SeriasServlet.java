@@ -1,14 +1,8 @@
 package by.verdeth.servlets;
 
-import by.verdeth.dao.genreDao.GenreDao;
 import by.verdeth.dao.genreDao.GenreDaoImplSingleton;
-import by.verdeth.dao.genreDao.GenreDaoJdbcImpl;
-import by.verdeth.dao.seriaDao.SeriaDao;
 import by.verdeth.dao.seriaDao.SeriaDaoImplSingleton;
-import by.verdeth.dao.seriaDao.SeriaDaoJdbcImpl;
-import by.verdeth.helpers.CreateDataSource;
 import by.verdeth.models.Genre;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +20,7 @@ public class SeriasServlet extends HttpServlet {
 //    private SeriaDao seriaDao;
 
     @Override
-    public void init() throws ServletException {
+    public void init(){
 //        //connect database
 //
 //        DriverManagerDataSource dataSource;
@@ -44,17 +38,16 @@ public class SeriasServlet extends HttpServlet {
 //        }
     }
 
+    //get-method for url-serias
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //give list of genres from database
         List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
-//                genreDao.findAll();
 
         //set attribute for jsp
         req.setAttribute("genresFromServer", genres);
 
         HashMap<String, Integer> seriasAndBooks = SeriaDaoImplSingleton.getInstance().getSeriaDao().findAllSeriasAndCountBooks();
-        //        seriaDao.findAllSeriasAndCountBooks();
 
         req.setAttribute("seriasAndBooksFromServer", seriasAndBooks);
 
@@ -62,10 +55,6 @@ public class SeriasServlet extends HttpServlet {
         req.getServletContext().getRequestDispatcher("/jsp/serias.jsp").forward(req,resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
-    }
 
 
 }
