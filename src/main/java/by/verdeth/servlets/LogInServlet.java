@@ -37,6 +37,9 @@ public class LogInServlet extends HttpServlet {
             //add session
             HttpSession session = req.getSession();
             session.setAttribute("nameUser", nameUser);
+
+            //check admin
+            session.setAttribute("isAdmin", UserDaoImplSingleton.getInstance().getUserDao().isHasAdminitrator(nameUser, password));
         }
         else {
             resp.sendRedirect("/login");

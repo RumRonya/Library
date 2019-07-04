@@ -50,8 +50,24 @@ public class UserDaoJdbcImpl implements UserDao {
         return false;
     }
 
+    //language=SQL
+    private String SQL_SELECT_BY_USER_NAME_AND_PASSWORD_AND_ADMIN = "SELECT * FROM users WHERE user_name = ? AND user_password = ? AND user_role = 0";
+
     @Override
     public boolean isHasAdminitrator(String nameUser, String password) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(SQL_SELECT_BY_USER_NAME_AND_PASSWORD_AND_ADMIN);
+            statement.setString(1, nameUser);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next())
+            {
+                return true;
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
