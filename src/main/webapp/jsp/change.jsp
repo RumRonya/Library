@@ -68,13 +68,13 @@
     <article id="right_content">
 
         <article class="big_book">
-
+HPFJLFJ:OFJ:OKGJ:OEJK
             <h1 class="name_book_big">
                 ${bookFromServer.nameBook}
             </h1>
             <c:if test="${sessionScope.isAdmin != null && sessionScope.isAdmin == true}">
-                <a class="download" href="/book?id=${bookFromServer.idBook}&change=true">ИЗМЕНИТЬ КНИГУ</a>
-                <a class="download" href="/delete?id=${bookFromServer.idBook}">УДАЛИТЬ КНИГУ</a>
+                <a class="download" href="/change?id=${bookFromDerver.idBook}">ИЗМЕНИТЬ КНИГУ</a>
+                <a class="download" href="/delete?id=${bookFromDerver.idBook}">УДАЛИТЬ КНИГУ</a>
             </c:if>
             <figure class="big_figure">
                 <img class="big_poster" src="${bookFromServer.URLPoster}"/>

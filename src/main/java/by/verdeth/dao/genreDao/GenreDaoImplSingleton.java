@@ -13,8 +13,10 @@ public class GenreDaoImplSingleton {
     }
 
     public static GenreDaoImplSingleton getInstance() {
+        int i =0;
         if (instance==null)
         {
+            int j = 0;
             instance = new GenreDaoImplSingleton();
         }
         return instance;

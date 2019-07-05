@@ -43,4 +43,7 @@ public interface BookDao extends CrudDao<Book> {
     //returns books of seria by its id
     List<Book> findAllByIdSeria(Integer var1);
 
+    //increment popular
+    void incPopular(Integer id);
+
 }

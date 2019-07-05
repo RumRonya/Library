@@ -1,6 +1,5 @@
 package by.verdeth.helpers;
 
-import by.verdeth.dao.genreDao.GenreDaoJdbcImpl;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;

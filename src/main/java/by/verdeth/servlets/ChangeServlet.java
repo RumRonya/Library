@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.util.List;
 
 
-@WebServlet ("/book")
-public class BookServlet extends HttpServlet {
+@WebServlet ("/change")
+public class ChangeServlet extends HttpServlet {
 
     @Override
     public void init(){
@@ -39,32 +39,9 @@ public class BookServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        //give list of genres from database
-        List<Genre> genres = GenreDaoImplSingleton.getInstance().getGenreDao().findAll();
-        //set attribute for jsp
-        req.setAttribute("genresFromServer", genres);
-
-        //if hasn't parameter 'id'
-        if (req.getParameter("id")==null)
-        {
-            req.getServletContext().getRequestDispatcher("/books").forward(req,resp);
-        }
-
-        //get book by id from db
-        Integer id = Integer.valueOf(req.getParameter("id"));
-        Book book = BookDaoImplSingleton.getInstance().getBookDao().find(id).get();
-        req.setAttribute("bookFromServer", book);
-
-        if ((req.getParameter("change")!=null) && req.getParameter("change").equals("true"))
-        {
-            int i = 0;
-            req.getServletContext().getRequestDispatcher("/change").forward(req,resp);
-        }
-
-
-        BookDaoImplSingleton.getInstance().getBookDao().incPopular(id);
+        int i = 0;
 
         //show jsp
-        req.getServletContext().getRequestDispatcher("/jsp/book.jsp").forward(req,resp);
+        req.getServletContext().getRequestDispatcher("/jsp/change.jsp").forward(req,resp);
     }
 }

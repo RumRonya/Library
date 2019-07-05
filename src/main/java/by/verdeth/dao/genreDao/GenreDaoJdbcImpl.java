@@ -35,6 +35,7 @@ public class GenreDaoJdbcImpl implements GenreDao {
     public GenreDaoJdbcImpl (DataSource dataSource)
     {
         try {
+            int i = 0;
             connection = dataSource.getConnection();
             this.dataSource = dataSource;
             }
