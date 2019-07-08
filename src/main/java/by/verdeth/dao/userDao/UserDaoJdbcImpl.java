@@ -15,9 +15,6 @@ public class UserDaoJdbcImpl implements UserDao {
 
     private Connection connection;
 
-    //language=SQL
-    private String SQL_SELECT_ALL_WITH_COUNT_BOOKS = "SELECT name_seria";
-
     public UserDaoJdbcImpl (DataSource dataSource)
     {
         try {

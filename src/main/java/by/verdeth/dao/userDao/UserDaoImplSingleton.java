@@ -7,7 +7,7 @@ public class UserDaoImplSingleton {
     private UserDao userDao;
 
     private UserDaoImplSingleton() {
-        userDao = new UserDaoJdbcImpl(CreateDataSource.getInstance().getDriverManagerDataSource());
+        userDao = new UserDaoJdbsTemolateImpl(CreateDataSource.getInstance().getDriverManagerDataSource());
     }
 
     public static UserDaoImplSingleton getInstance() {

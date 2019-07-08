@@ -56,7 +56,8 @@ public class RegisterServlet extends HttpServlet {
             req.getServletContext().getRequestDispatcher("/login").forward(req, resp);
         }
 
-        //if user didn't added
-        resp.sendRedirect("/register");
+        else {//if user didn't added
+            resp.sendRedirect("/register");
+        }
     }
 }
